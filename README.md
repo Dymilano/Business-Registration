@@ -223,4 +223,4 @@ Nếu có câu hỏi hoặc góp ý, vui lòng liên hệ qua:
 ---
 
 **Phiên bản**: 1.0.0  
-**Cập nhật lần cuối**: Tháng 8, 2024
+**Cập nhật lần cuối**: Tháng 8, 2025
