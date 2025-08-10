@@ -1,0 +1,29 @@
+# Connection String cho SQL Server 2022
+# Thay thế các thông tin sau theo cấu hình của bạn:
+
+# 1. Windows Authentication (Khuyến nghị)
+"ConnectionStrings": {
+  "DefaultConnection": "Server=WINDOWS-PC\\MSSQLSERVER01;Database=DoanhNghiepPortal;Trusted_Connection=true;TrustServerCertificate=true;MultipleActiveResultSets=true"
+}
+
+# 2. SQL Server Authentication (Nếu cần)
+"ConnectionStrings": {
+  "DefaultConnection": "Server=WINDOWS-PC\\MSSQLSERVER01;Database=DoanhNghiepPortal;User Id=YourUsername;Password=YourPassword;TrustServerCertificate=true;MultipleActiveResultSets=true"
+}
+
+# 3. LocalDB (Nếu dùng LocalDB)
+"ConnectionStrings": {
+  "DefaultConnection": "Server=(localdb)\\mssqllocaldb;Database=DoanhNghiepPortal;Trusted_Connection=true;MultipleActiveResultSets=true"
+}
+
+# Thông tin Server:
+# - Server Name: WINDOWS-PC\MSSQLSERVER01
+# - Database: DoanhNghiepPortal
+# - Authentication: Windows Authentication
+# - Trust Server Certificate: true (cho development)
+
+# Các tham số quan trọng:
+# - Trusted_Connection=true: Sử dụng Windows Authentication
+# - TrustServerCertificate=true: Bỏ qua SSL certificate validation (cho dev)
+# - MultipleActiveResultSets=true: Cho phép nhiều kết nối đồng thời
+# - Integrated Security=true: Tương đương Trusted_Connection=true 
