@@ -1,0 +1,224 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Healing-main\\DoanhNghiepPortal\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{274FFE0F-5182-8D99-2D52-F8B3124938D4}|DoanhNghiepPortal.csproj|d:\\healing-main\\doanhnghiepportal\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{274FFE0F-5182-8D99-2D52-F8B3124938D4}|DoanhNghiepPortal.csproj|solutionrelative:properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{274FFE0F-5182-8D99-2D52-F8B3124938D4}|DoanhNghiepPortal.csproj|d:\\healing-main\\doanhnghiepportal\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{274FFE0F-5182-8D99-2D52-F8B3124938D4}|DoanhNghiepPortal.csproj|solutionrelative:appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{274FFE0F-5182-8D99-2D52-F8B3124938D4}|DoanhNghiepPortal.csproj|d:\\healing-main\\doanhnghiepportal\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{274FFE0F-5182-8D99-2D52-F8B3124938D4}|DoanhNghiepPortal.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{274FFE0F-5182-8D99-2D52-F8B3124938D4}|DoanhNghiepPortal.csproj|d:\\healing-main\\doanhnghiepportal\\ .gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{274FFE0F-5182-8D99-2D52-F8B3124938D4}|DoanhNghiepPortal.csproj|solutionrelative: .gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{274FFE0F-5182-8D99-2D52-F8B3124938D4}|DoanhNghiepPortal.csproj|d:\\healing-main\\doanhnghiepportal\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{274FFE0F-5182-8D99-2D52-F8B3124938D4}|DoanhNghiepPortal.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{274FFE0F-5182-8D99-2D52-F8B3124938D4}|DoanhNghiepPortal.csproj|d:\\healing-main\\doanhnghiepportal\\models\\articlemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{274FFE0F-5182-8D99-2D52-F8B3124938D4}|DoanhNghiepPortal.csproj|solutionrelative:models\\articlemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{274FFE0F-5182-8D99-2D52-F8B3124938D4}|DoanhNghiepPortal.csproj|d:\\healing-main\\doanhnghiepportal\\models\\businessmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{274FFE0F-5182-8D99-2D52-F8B3124938D4}|DoanhNghiepPortal.csproj|solutionrelative:models\\businessmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{274FFE0F-5182-8D99-2D52-F8B3124938D4}|DoanhNghiepPortal.csproj|d:\\healing-main\\doanhnghiepportal\\migrations\\20250808095730_addroletousers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{274FFE0F-5182-8D99-2D52-F8B3124938D4}|DoanhNghiepPortal.csproj|solutionrelative:migrations\\20250808095730_addroletousers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{274FFE0F-5182-8D99-2D52-F8B3124938D4}|DoanhNghiepPortal.csproj|d:\\healing-main\\doanhnghiepportal\\migrations\\20250808090326_addupdatedatandlastloginattousers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{274FFE0F-5182-8D99-2D52-F8B3124938D4}|DoanhNghiepPortal.csproj|solutionrelative:migrations\\20250808090326_addupdatedatandlastloginattousers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{274FFE0F-5182-8D99-2D52-F8B3124938D4}|DoanhNghiepPortal.csproj|d:\\healing-main\\doanhnghiepportal\\migrations\\20250808081400_updateregistrationmodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{274FFE0F-5182-8D99-2D52-F8B3124938D4}|DoanhNghiepPortal.csproj|solutionrelative:migrations\\20250808081400_updateregistrationmodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{274FFE0F-5182-8D99-2D52-F8B3124938D4}|DoanhNghiepPortal.csproj|d:\\healing-main\\doanhnghiepportal\\migrations\\20250808071705_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{274FFE0F-5182-8D99-2D52-F8B3124938D4}|DoanhNghiepPortal.csproj|solutionrelative:migrations\\20250808071705_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{274FFE0F-5182-8D99-2D52-F8B3124938D4}|DoanhNghiepPortal.csproj|d:\\healing-main\\doanhnghiepportal\\views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{274FFE0F-5182-8D99-2D52-F8B3124938D4}|DoanhNghiepPortal.csproj|solutionrelative:views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\Healing-main\\DoanhNghiepPortal\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "D:\\Healing-main\\DoanhNghiepPortal\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-08-10T07:21:05.333Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "20250808081400_UpdateRegistrationModels.cs",
+              "DocumentMoniker": "D:\\Healing-main\\DoanhNghiepPortal\\Migrations\\20250808081400_UpdateRegistrationModels.cs",
+              "RelativeDocumentMoniker": "Migrations\\20250808081400_UpdateRegistrationModels.cs",
+              "ToolTip": "D:\\Healing-main\\DoanhNghiepPortal\\Migrations\\20250808081400_UpdateRegistrationModels.cs",
+              "RelativeToolTip": "Migrations\\20250808081400_UpdateRegistrationModels.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-10T07:12:32.05Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "20250808071705_InitialCreate.cs",
+              "DocumentMoniker": "D:\\Healing-main\\DoanhNghiepPortal\\Migrations\\20250808071705_InitialCreate.cs",
+              "RelativeDocumentMoniker": "Migrations\\20250808071705_InitialCreate.cs",
+              "ToolTip": "D:\\Healing-main\\DoanhNghiepPortal\\Migrations\\20250808071705_InitialCreate.cs",
+              "RelativeToolTip": "Migrations\\20250808071705_InitialCreate.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-10T07:12:31.031Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Healing-main\\DoanhNghiepPortal\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "D:\\Healing-main\\DoanhNghiepPortal\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-10T07:03:52.561Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": " .gitignore",
+              "DocumentMoniker": "D:\\Healing-main\\DoanhNghiepPortal\\ .gitignore",
+              "RelativeDocumentMoniker": " .gitignore",
+              "ToolTip": "D:\\Healing-main\\DoanhNghiepPortal\\ .gitignore",
+              "RelativeToolTip": " .gitignore",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-08-10T07:03:58.819Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "D:\\Healing-main\\DoanhNghiepPortal\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "Properties\\launchSettings.json",
+              "ToolTip": "D:\\Healing-main\\DoanhNghiepPortal\\Properties\\launchSettings.json",
+              "RelativeToolTip": "Properties\\launchSettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-08-10T07:04:05.392Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "appsettings.Development.json",
+              "DocumentMoniker": "D:\\Healing-main\\DoanhNghiepPortal\\appsettings.Development.json",
+              "RelativeDocumentMoniker": "appsettings.Development.json",
+              "ToolTip": "D:\\Healing-main\\DoanhNghiepPortal\\appsettings.Development.json",
+              "RelativeToolTip": "appsettings.Development.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-08-10T07:03:56.851Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "20250808090326_AddUpdatedAtAndLastLoginAtToUsers.cs",
+              "DocumentMoniker": "D:\\Healing-main\\DoanhNghiepPortal\\Migrations\\20250808090326_AddUpdatedAtAndLastLoginAtToUsers.cs",
+              "RelativeDocumentMoniker": "Migrations\\20250808090326_AddUpdatedAtAndLastLoginAtToUsers.cs",
+              "ToolTip": "D:\\Healing-main\\DoanhNghiepPortal\\Migrations\\20250808090326_AddUpdatedAtAndLastLoginAtToUsers.cs",
+              "RelativeToolTip": "Migrations\\20250808090326_AddUpdatedAtAndLastLoginAtToUsers.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-10T07:12:32.657Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "20250808095730_AddRoleToUsers.cs",
+              "DocumentMoniker": "D:\\Healing-main\\DoanhNghiepPortal\\Migrations\\20250808095730_AddRoleToUsers.cs",
+              "RelativeDocumentMoniker": "Migrations\\20250808095730_AddRoleToUsers.cs",
+              "ToolTip": "D:\\Healing-main\\DoanhNghiepPortal\\Migrations\\20250808095730_AddRoleToUsers.cs",
+              "RelativeToolTip": "Migrations\\20250808095730_AddRoleToUsers.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-10T07:12:33.302Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "BusinessModel.cs",
+              "DocumentMoniker": "D:\\Healing-main\\DoanhNghiepPortal\\Models\\BusinessModel.cs",
+              "RelativeDocumentMoniker": "Models\\BusinessModel.cs",
+              "ToolTip": "D:\\Healing-main\\DoanhNghiepPortal\\Models\\BusinessModel.cs",
+              "RelativeToolTip": "Models\\BusinessModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-10T07:12:34.188Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ArticleModel.cs",
+              "DocumentMoniker": "D:\\Healing-main\\DoanhNghiepPortal\\Models\\ArticleModel.cs",
+              "RelativeDocumentMoniker": "Models\\ArticleModel.cs",
+              "ToolTip": "D:\\Healing-main\\DoanhNghiepPortal\\Models\\ArticleModel.cs",
+              "RelativeToolTip": "Models\\ArticleModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-10T07:12:34.985Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "_ViewStart.cshtml",
+              "DocumentMoniker": "D:\\Healing-main\\DoanhNghiepPortal\\Views\\_ViewStart.cshtml",
+              "RelativeDocumentMoniker": "Views\\_ViewStart.cshtml",
+              "ToolTip": "D:\\Healing-main\\DoanhNghiepPortal\\Views\\_ViewStart.cshtml",
+              "RelativeToolTip": "Views\\_ViewStart.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-08-10T07:04:03.247Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

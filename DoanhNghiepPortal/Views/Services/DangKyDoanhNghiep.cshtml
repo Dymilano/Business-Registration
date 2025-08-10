@@ -1,0 +1,223 @@
+@model DoanhNghiepPortal.Models.BusinessRegistrationModel
+@{
+    ViewData["Title"] = "Đăng Ký Doanh Nghiệp";
+}
+
+<div class="main-banner wow fadeIn" id="top" data-wow-duration="1s" data-wow-delay="0.5s">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="row">
+                    <div class="col-lg-6 align-self-center">
+                        <div class="left-content header-text wow fadeInLeft" data-wow-duration="1s" data-wow-delay="1s">
+                            <h6>Đăng Ký Doanh Nghiệp</h6>
+                            <h2>Thành lập <em>Doanh nghiệp</em> mới</h2>
+                            <p>Đăng ký thành lập doanh nghiệp mới với các loại hình: Công ty TNHH, Công ty Cổ phần, Doanh nghiệp tư nhân. Quy trình đơn giản, nhanh chóng và thuận tiện.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="right-image wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
+                            <img src="~/assets/images/banner-right-image.png" alt="Business Registration">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="contact-us section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-heading text-center">
+                    <h2>Thông tin đăng ký doanh nghiệp</h2>
+                    <p>Vui lòng điền đầy đủ thông tin bên dưới để đăng ký doanh nghiệp</p>
+                </div>
+            </div>
+        </div>
+        
+        @if (!ViewData.ModelState.IsValid)
+        {
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="alert alert-danger">
+                        <h4>Vui lòng kiểm tra lại thông tin đã nhập:</h4>
+                        <ul>
+                            @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                            {
+                                <li>@error.ErrorMessage</li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        }
+        
+        <div class="row">
+            <div class="col-lg-12">
+                <form asp-action="DangKyDoanhNghiep" method="post" id="registrationForm">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <fieldset>
+                                <label asp-for="BusinessName">Tên doanh nghiệp *</label>
+                                <input asp-for="BusinessName" type="text" placeholder="Nhập tên doanh nghiệp" required>
+                                <span asp-validation-for="BusinessName" class="text-danger"></span>
+                            </fieldset>
+                        </div>
+                        <div class="col-lg-6">
+                            <fieldset>
+                                <label asp-for="BusinessType">Loại hình doanh nghiệp *</label>
+                                <select asp-for="BusinessType" required>
+                                    <option value="">Chọn loại hình doanh nghiệp</option>
+                                    <option value="TNHH">Công ty TNHH</option>
+                                    <option value="CP">Công ty Cổ phần</option>
+                                    <option value="DNTN">Doanh nghiệp tư nhân</option>
+                                    <option value="HDLD">Hợp danh</option>
+                                </select>
+                                <span asp-validation-for="BusinessType" class="text-danger"></span>
+                            </fieldset>
+                        </div>
+                        <div class="col-lg-12">
+                            <fieldset>
+                                <label asp-for="Address">Địa chỉ trụ sở *</label>
+                                <input asp-for="Address" type="text" placeholder="Nhập địa chỉ trụ sở chính" required>
+                                <span asp-validation-for="Address" class="text-danger"></span>
+                            </fieldset>
+                        </div>
+                        <div class="col-lg-6">
+                            <fieldset>
+                                <label asp-for="CharterCapital">Vốn điều lệ (VNĐ) *</label>
+                                <input asp-for="CharterCapital" type="number" placeholder="Nhập vốn điều lệ" required>
+                                <span asp-validation-for="CharterCapital" class="text-danger"></span>
+                            </fieldset>
+                        </div>
+                        <div class="col-lg-6">
+                            <fieldset>
+                                <label asp-for="BusinessLine">Ngành nghề kinh doanh *</label>
+                                <input asp-for="BusinessLine" type="text" placeholder="Nhập ngành nghề kinh doanh" required>
+                                <span asp-validation-for="BusinessLine" class="text-danger"></span>
+                            </fieldset>
+                        </div>
+                        <div class="col-lg-6">
+                            <fieldset>
+                                <label asp-for="Representative">Tên người đại diện *</label>
+                                <input asp-for="Representative" type="text" placeholder="Nhập tên người đại diện" required>
+                                <span asp-validation-for="Representative" class="text-danger"></span>
+                            </fieldset>
+                        </div>
+                        <div class="col-lg-6">
+                            <fieldset>
+                                <label asp-for="IdNumber">Số CMND/CCCD *</label>
+                                <input asp-for="IdNumber" type="text" placeholder="Nhập số CMND/CCCD (12 chữ số)" required>
+                                <span asp-validation-for="IdNumber" class="text-danger"></span>
+                            </fieldset>
+                        </div>
+                        <div class="col-lg-6">
+                            <fieldset>
+                                <label asp-for="PhoneNumber">Số điện thoại *</label>
+                                <input asp-for="PhoneNumber" type="tel" placeholder="Nhập số điện thoại" required>
+                                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                            </fieldset>
+                        </div>
+                        <div class="col-lg-6">
+                            <fieldset>
+                                <label asp-for="Email">Email *</label>
+                                <input asp-for="Email" type="email" placeholder="Nhập email" required>
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </fieldset>
+                        </div>
+                        <div class="col-lg-12">
+                            <fieldset>
+                                <label asp-for="Website">Website</label>
+                                <input asp-for="Website" type="url" placeholder="Nhập website (nếu có)">
+                                <span asp-validation-for="Website" class="text-danger"></span>
+                            </fieldset>
+                        </div>
+                        <div class="col-lg-12">
+                            <fieldset>
+                                <label asp-for="Notes">Ghi chú</label>
+                                <textarea asp-for="Notes" placeholder="Ghi chú thêm (nếu có)"></textarea>
+                                <span asp-validation-for="Notes" class="text-danger"></span>
+                            </fieldset>
+                        </div>
+                        <div class="col-lg-12">
+                            <fieldset>
+                                <button type="submit" class="main-button" id="submitBtn">Gửi hồ sơ đăng ký</button>
+                            </fieldset>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .contact-us fieldset {
+        margin-bottom: 20px;
+    }
+    
+    .contact-us label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: 500;
+        color: #333;
+    }
+    
+    .contact-us input,
+    .contact-us select,
+    .contact-us textarea {
+        width: 100%;
+        padding: 12px 15px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 14px;
+        transition: border-color 0.3s ease;
+    }
+    
+    .contact-us input:focus,
+    .contact-us select:focus,
+    .contact-us textarea:focus {
+        outline: none;
+        border-color: #007bff;
+        box-shadow: 0 0 0 2px rgba(0,123,255,0.25);
+    }
+    
+    .contact-us textarea {
+        height: 100px;
+        resize: vertical;
+    }
+    
+    .text-danger {
+        color: #dc3545;
+        font-size: 12px;
+        margin-top: 5px;
+        display: block;
+    }
+    
+    .alert {
+        padding: 15px;
+        margin-bottom: 20px;
+        border: 1px solid transparent;
+        border-radius: 4px;
+    }
+    
+    .alert-danger {
+        color: #721c24;
+        background-color: #f8d7da;
+        border-color: #f5c6cb;
+    }
+</style>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    
+    <script>
+        $(document).ready(function() {
+            $('#registrationForm').on('submit', function(e) {
+                $('#submitBtn').prop('disabled', true).text('Đang xử lý...');
+            });
+        });
+    </script>
+} 

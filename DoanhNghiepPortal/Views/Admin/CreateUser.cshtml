@@ -1,0 +1,233 @@
+@model DoanhNghiepPortal.Models.UserModel
+@{
+    ViewData["Title"] = "Tạo Người Dùng Mới";
+    Layout = "_AdminLayout";
+}
+
+@section Styles {
+    <style>
+        .admin-container {
+            padding: 20px;
+        }
+        
+        .page-header {
+            background: linear-gradient(135deg, #28a745, #20c997);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .page-header h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+        
+        .form-container {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            font-weight: bold;
+            color: #495057;
+            margin-bottom: 8px;
+            display: block;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 0 0.2rem rgba(0,123,255,0.25);
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .btn-submit {
+            background: linear-gradient(135deg, #28a745, #20c997);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .btn-cancel {
+            background: #6c757d;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin-left: 10px;
+        }
+        
+        .btn-cancel:hover {
+            background: #5a6268;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .text-danger {
+            color: #dc3545;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+        
+        .alert {
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .alert-danger {
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+        }
+        
+        .alert-success {
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+        }
+    </style>
+}
+
+<div class="admin-container">
+    <div class="page-header">
+        <h1><i class="fas fa-user-plus me-2"></i>Tạo Người Dùng Mới</h1>
+        <p>Thêm người dùng mới vào hệ thống</p>
+    </div>
+
+    <div class="form-container">
+        @if (!ViewData.ModelState.IsValid)
+        {
+            <div class="alert alert-danger">
+                <h5><i class="fas fa-exclamation-triangle me-2"></i>Có lỗi xảy ra</h5>
+                <div asp-validation-summary="All" class="text-danger"></div>
+            </div>
+        }
+
+        <form asp-action="CreateUser" method="post">
+            <div class="form-row">
+                <div class="form-group">
+                    <label asp-for="Username">
+                        <i class="fas fa-user me-2"></i>Tên đăng nhập *
+                    </label>
+                    <input asp-for="Username" class="form-control" placeholder="Nhập tên đăng nhập" required>
+                    <span asp-validation-for="Username" class="text-danger"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label asp-for="Email">
+                        <i class="fas fa-envelope me-2"></i>Email *
+                    </label>
+                    <input asp-for="Email" type="email" class="form-control" placeholder="Nhập email" required>
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label asp-for="Password">
+                        <i class="fas fa-lock me-2"></i>Mật khẩu *
+                    </label>
+                    <input asp-for="Password" type="password" class="form-control" placeholder="Nhập mật khẩu" required>
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label asp-for="ConfirmPassword">
+                        <i class="fas fa-check-circle me-2"></i>Xác nhận mật khẩu *
+                    </label>
+                    <input asp-for="ConfirmPassword" type="password" class="form-control" placeholder="Xác nhận mật khẩu" required>
+                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label asp-for="FullName">
+                        <i class="fas fa-id-card me-2"></i>Họ và tên *
+                    </label>
+                    <input asp-for="FullName" class="form-control" placeholder="Nhập họ và tên" required>
+                    <span asp-validation-for="FullName" class="text-danger"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label asp-for="PhoneNumber">
+                        <i class="fas fa-phone me-2"></i>Số điện thoại
+                    </label>
+                    <input asp-for="PhoneNumber" class="form-control" placeholder="Nhập số điện thoại">
+                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Role">
+                    <i class="fas fa-user-shield me-2"></i>Vai trò
+                </label>
+                <select asp-for="Role" class="form-control">
+                    <option value="User">User</option>
+                    <option value="Admin">Admin</option>
+                </select>
+                <span asp-validation-for="Role" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <input asp-for="IsActive" type="checkbox" style="width: auto; margin: 0;">
+                    <label asp-for="IsActive" style="margin: 0; font-weight: normal;">
+                        <i class="fas fa-toggle-on me-2"></i>Kích hoạt tài khoản
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group" style="margin-top: 30px;">
+                <button type="submit" class="btn-submit">
+                    <i class="fas fa-save me-2"></i>Tạo người dùng
+                </button>
+                <a href="/Admin/Users" class="btn-cancel">
+                    <i class="fas fa-times me-2"></i>Hủy bỏ
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+} 

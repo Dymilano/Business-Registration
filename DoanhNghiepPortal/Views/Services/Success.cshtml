@@ -1,0 +1,415 @@
+@{
+    ViewData["Title"] = "Đăng Ký Thành Công";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/success.css" />
+    <style>
+        .success-banner {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .success-icon {
+            font-size: 4rem;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+        
+        .success-title {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .success-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+        
+        .success-message {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+        
+        .success-description {
+            font-size: 1rem;
+            opacity: 0.8;
+            margin-bottom: 30px;
+        }
+        
+        .status-badge {
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin: 10px 0;
+        }
+        
+        .status-sent {
+            background: #28a745;
+            color: white;
+        }
+        
+        .status-pending {
+            background: #ffc107;
+            color: #212529;
+        }
+        
+        .registration-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            margin: 30px 0;
+            overflow: hidden;
+        }
+        
+        .card-header {
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            color: white;
+            padding: 20px;
+        }
+        
+        .header-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+        }
+        
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .info-item:last-child {
+            border-bottom: none;
+        }
+        
+        .info-label {
+            font-weight: bold;
+            color: #495057;
+        }
+        
+        .info-value {
+            color: #6c757d;
+            font-weight: 500;
+        }
+        
+        .registration-id {
+            background: #f8f9fa;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-family: monospace;
+            color: #007bff;
+        }
+        
+        .success-alert {
+            background: linear-gradient(135deg, #d4edda, #c3e6cb);
+            border: 2px solid #28a745;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .success-alert h3 {
+            color: #155724;
+            margin-bottom: 10px;
+        }
+        
+        .success-alert p {
+            color: #155724;
+            margin-bottom: 0;
+        }
+    </style>
+}
+
+@section Scripts {
+    <script>
+        // Cập nhật thông tin hồ sơ real-time
+        function updateRegistrationInfo() {
+            const registrationId = '@ViewData["RegistrationId"]';
+            const registrationType = '@ViewData["RegistrationType"]';
+            const type = registrationType === 'Doanh nghiệp' ? 'business' : 'license';
+            
+            if (registrationId) {
+                fetch(`/Services/GetRegistrationInfo?registrationId=${registrationId}&type=${type}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            // Cập nhật trạng thái
+                            const statusElement = document.querySelector('.status-badge');
+                            if (statusElement) {
+                                const status = data.data.status;
+                                if (status === 'Đã duyệt') {
+                                    statusElement.className = 'status-badge status-approved';
+                                    statusElement.innerHTML = '✅ Đã duyệt';
+                                } else if (status === 'Từ chối') {
+                                    statusElement.className = 'status-badge status-rejected';
+                                    statusElement.innerHTML = '❌ Từ chối';
+                                } else {
+                                    statusElement.className = 'status-badge status-pending';
+                                    statusElement.innerHTML = '⏳ Chờ duyệt';
+                                }
+                            }
+                            
+                            // Cập nhật thời gian cập nhật
+                            if (data.data.updatedAt) {
+                                const updatedAtElement = document.querySelector('.info-value:last-child');
+                                if (updatedAtElement) {
+                                    updatedAtElement.textContent = data.data.updatedAt;
+                                }
+                            }
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error updating registration info:', error);
+                    });
+            }
+        }
+
+        // Cập nhật thông tin mỗi 30 giây
+        setInterval(updateRegistrationInfo, 30000);
+
+        // Cập nhật ngay khi trang load
+        document.addEventListener('DOMContentLoaded', function() {
+            updateRegistrationInfo();
+        });
+
+        // Thêm hiệu ứng confetti khi trang load
+        function createConfetti() {
+            const colors = ['#28a745', '#007bff', '#ffc107', '#dc3545', '#6f42c1'];
+            const confettiCount = 100;
+            
+            for (let i = 0; i < confettiCount; i++) {
+                const confetti = document.createElement('div');
+                confetti.style.position = 'fixed';
+                confetti.style.width = '10px';
+                confetti.style.height = '10px';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.top = '-10px';
+                confetti.style.zIndex = '9999';
+                confetti.style.borderRadius = '50%';
+                confetti.style.animation = `fall ${Math.random() * 3 + 2}s linear forwards`;
+                
+                document.body.appendChild(confetti);
+                
+                setTimeout(() => {
+                    confetti.remove();
+                }, 5000);
+            }
+        }
+
+        // Thêm CSS animation cho confetti
+        const style = document.createElement('style');
+        style.textContent = `
+            @@keyframes fall {
+                to {
+                    transform: translateY(100vh) rotate(360deg);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Chạy confetti khi trang load
+        window.addEventListener('load', function() {
+            setTimeout(createConfetti, 500);
+        });
+    </script>
+}
+
+<div class="success-banner wow fadeIn" id="top" data-wow-duration="1s" data-wow-delay="0.5s">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10 text-center">
+                <div class="success-content wow fadeInUp" data-wow-duration="1s" data-wow-delay="1s">
+                    <div class="success-icon mb-4">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h1 class="success-title">🎉 Chúc mừng!</h1>
+                    <h2 class="success-subtitle">Hồ sơ đã được <em>Gửi thành công</em></h2>
+                    
+                    <!-- Thông báo nổi bật -->
+                    <div class="success-alert">
+                        <h3><i class="fas fa-paper-plane me-2"></i>✅ HỒ SƠ ĐÃ ĐƯỢC GỬI THÀNH CÔNG!</h3>
+                        <p><strong>@ViewData["RegistrationType"]</strong> - <strong>@ViewData["BusinessName"]</strong></p>
+                        <p>Mã hồ sơ: <code>#@ViewData["RegistrationId"]</code></p>
+                    </div>
+                    
+                    <p class="success-description">Chúng tôi sẽ xử lý hồ sơ của bạn trong thời gian sớm nhất. Bạn sẽ nhận được thông báo qua email hoặc số điện thoại đã đăng ký.</p>
+                    
+                    <div class="success-buttons mt-4">
+                        <a href="/" class="btn btn-primary btn-lg me-3">
+                            <i class="fas fa-home me-2"></i>Về Trang Chủ
+                        </a>
+                        <a href="/Services/DangKyDoanhNghiep" class="btn btn-outline-primary btn-lg me-3">
+                            <i class="fas fa-plus me-2"></i>Đăng Ký Thêm
+                        </a>
+                        <a href="/Account/Profile" class="btn btn-success btn-lg">
+                            <i class="fas fa-user me-2"></i>Xem Hồ Sơ
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="about-us section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="section-heading">
+                    <h2>Thông tin hồ sơ đã đăng ký</h2>
+                    <p>Dưới đây là thông tin chi tiết về hồ sơ của bạn:</p>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center mb-5">
+            <div class="col-lg-10">
+                <div class="registration-card">
+                    <div class="card-header">
+                        <div class="d-flex align-items-center">
+                            <div class="header-icon">
+                                <i class="fas fa-file-alt"></i>
+                            </div>
+                            <div class="header-content">
+                                <h4 class="mb-0">📋 Thông tin hồ sơ đã đăng ký</h4>
+                                <p class="mb-0">Chi tiết hồ sơ của bạn</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="info-item">
+                                    <div class="info-label">
+                                        <i class="fas fa-tag me-2"></i>Loại hồ sơ:
+                                    </div>
+                                    <div class="info-value">
+                                        <span class="badge badge-primary">@ViewData["RegistrationType"]</span>
+                                    </div>
+                                </div>
+                                <div class="info-item">
+                                    <div class="info-label">
+                                        <i class="fas fa-building me-2"></i>Tên doanh nghiệp:
+                                    </div>
+                                    <div class="info-value">@ViewData["BusinessName"]</div>
+                                </div>
+                                <div class="info-item">
+                                    <div class="info-label">
+                                        <i class="fas fa-hashtag me-2"></i>Mã hồ sơ:
+                                    </div>
+                                    <div class="info-value">
+                                        <code class="registration-id">#@ViewData["RegistrationId"]</code>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="info-item">
+                                    <div class="info-label">
+                                        <i class="fas fa-calendar me-2"></i>Ngày đăng ký:
+                                    </div>
+                                    <div class="info-value">@ViewData["CreatedAt"]</div>
+                                </div>
+                                <div class="info-item">
+                                    <div class="info-label">
+                                        <i class="fas fa-clock me-2"></i>Trạng thái:
+                                    </div>
+                                    <div class="info-value">
+                                        <span class="status-badge status-sent">✅ Đã gửi</span>
+                                    </div>
+                                </div>
+                                <div class="info-item">
+                                    <div class="info-label">
+                                        <i class="fas fa-hourglass-half me-2"></i>Thời gian xử lý:
+                                    </div>
+                                    <div class="info-value">3-5 ngày làm việc</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="section-heading">
+                    <h2>Bước tiếp theo</h2>
+                    <p>Hồ sơ của bạn đã được gửi thành công. Dưới đây là những gì sẽ xảy ra tiếp theo:</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="step-card">
+                    <div class="step-icon">
+                        <div class="icon-circle">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="step-number">1</div>
+                    </div>
+                    <div class="step-content">
+                        <h4>✅ Xác nhận hồ sơ</h4>
+                        <p>Hồ sơ đã được gửi và đang được xử lý</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="step-card">
+                    <div class="step-icon">
+                        <div class="icon-circle">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <div class="step-number">2</div>
+                    </div>
+                    <div class="step-content">
+                        <h4>🔍 Kiểm tra thông tin</h4>
+                        <p>Thông tin sẽ được kiểm tra và xác minh</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="step-card">
+                    <div class="step-icon">
+                        <div class="icon-circle">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="step-number">3</div>
+                    </div>
+                    <div class="step-content">
+                        <h4>⏱️ Xử lý hồ sơ</h4>
+                        <p>Thời gian xử lý từ 3-5 ngày làm việc</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="step-card">
+                    <div class="step-icon">
+                        <div class="icon-circle">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="step-number">4</div>
+                    </div>
+                    <div class="step-content">
+                        <h4>📧 Thông báo kết quả</h4>
+                        <p>Bạn sẽ nhận được thông báo qua email/SMS</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 

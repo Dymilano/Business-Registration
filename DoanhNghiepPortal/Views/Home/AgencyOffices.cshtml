@@ -1,0 +1,997 @@
+@{
+    ViewData["Title"] = "Cơ quan Đăng ký kinh doanh các tỉnh, thành phố";
+}
+<div class="container" style="margin-top: 150px; padding-top: 30px;">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Cơ quan Đăng ký kinh doanh các tỉnh, thành phố</li>
+        </ol>
+    </nav>
+    <div class="row">
+        <div class="col-md-9">
+            <div class="card mb-4">
+                <div class="card-body bg-primary text-white">
+                    <div class="row g-2 align-items-center">
+                        <div class="col-md-5 mb-2 mb-md-0">
+                            <select class="form-select">
+                                <option>--- Chọn Tỉnh/Thành phố ---</option>
+                                <option value="59">Thành phố Cần Thơ</option>
+                                <option value="32">Thành phố Đà Nẵng</option>
+                                <option value="1">Thành phố Hà Nội</option>
+                                <option value="20">Thành phố Hải Phòng</option>
+                                <option value="50">Thành phố Hồ Chí Minh</option>
+                                <option value="31">Thành phố Huế</option>
+                                <option value="57">Tỉnh An Giang</option>
+                                <option value="49">Tỉnh Bà Rịa - Vũng Tàu</option>
+                                <option value="15">Tỉnh Bắc Giang</option>
+                                <option value="4">Tỉnh Bắc Kạn</option>
+                                <option value="62">Tỉnh Bạc Liêu</option>
+                                <option value="18">Tỉnh Bắc Ninh</option>
+                                <option value="53">Tỉnh Bến Tre</option>
+                                <option value="35">Tỉnh Bình Định</option>
+                                <option value="47">Tỉnh Bình Dương</option>
+                                <option value="45">Tỉnh Bình Phước</option>
+                                <option value="39">Tỉnh Bình Thuận</option>
+                                <option value="63">Tỉnh Cà Mau</option>
+                                <option value="3">Tỉnh Cao Bằng</option>
+                                <option value="42">Tỉnh Đắk Lắk</option>
+                                <option value="43">Tỉnh Đắk Nông</option>
+                                <option value="7">Tỉnh Điện Biên</option>
+                                <option value="48">Tỉnh Đồng Nai</option>
+                                <option value="56">Tỉnh Đồng Tháp</option>
+                                <option value="41">Tỉnh Gia Lai</option>
+                                <option value="2">Tỉnh Hà Giang</option>
+                                <option value="23">Tỉnh Hà Nam</option>
+                                <option value="28">Tỉnh Hà Tĩnh</option>
+                                <option value="19">Tỉnh Hải Dương</option>
+                                <option value="60">Tỉnh Hậu Giang</option>
+                                <option value="11">Tỉnh Hoà Bình</option>
+                                <option value="21">Tỉnh Hưng Yên</option>
+                                <option value="37">Tỉnh Khánh Hoà</option>
+                                <option value="58">Tỉnh Kiên Giang</option>
+                                <option value="40">Tỉnh Kon Tum</option>
+                                <option value="8">Tỉnh Lai Châu</option>
+                                <option value="44">Tỉnh Lâm Đồng</option>
+                                <option value="13">Tỉnh Lạng Sơn</option>
+                                <option value="6">Tỉnh Lào Cai</option>
+                                <option value="51">Tỉnh Long An</option>
+                                <option value="24">Tỉnh Nam Định</option>
+                                <option value="27">Tỉnh Nghệ An</option>
+                                <option value="25">Tỉnh Ninh Bình</option>
+                                <option value="38">Tỉnh Ninh Thuận</option>
+                                <option value="16">Tỉnh Phú Thọ</option>
+                                <option value="36">Tỉnh Phú Yên</option>
+                                <option value="29">Tỉnh Quảng Bình</option>
+                                <option value="33">Tỉnh Quảng Nam</option>
+                                <option value="34">Tỉnh Quảng Ngãi</option>
+                                <option value="14">Tỉnh Quảng Ninh</option>
+                                <option value="30">Tỉnh Quảng Trị</option>
+                                <option value="61">Tỉnh Sóc Trăng</option>
+                                <option value="9">Tỉnh Sơn La</option>
+                                <option value="46">Tỉnh Tây Ninh</option>
+                                <option value="22">Tỉnh Thái Bình</option>
+                                <option value="12">Tỉnh Thái Nguyên</option>
+                                <option value="26">Tỉnh Thanh Hoá</option>
+                                <option value="52">Tỉnh Tiền Giang</option>
+                                <option value="54">Tỉnh Trà Vinh</option>
+                                <option value="5">Tỉnh Tuyên Quang</option>
+                                <option value="55">Tỉnh Vĩnh Long</option>
+                                <option value="17">Tỉnh Vĩnh Phúc</option>
+                                <option value="10">Tỉnh Yên Bái</option>
+                            </select>
+                        </div>
+                        <div class="col-md-5 mb-2 mb-md-0">
+                            <select class="form-select" id="unitSelect">
+                                <option>--- Chọn đơn vị hành chính ---</option>
+                                <option value="so-tai-chinh">Sở Tài chính</option>
+                                <option value="trung-tam-hanh-chinh-cong">Trung tâm Hành Chính Công</option>
+                            </select>
+                        </div>
+                        <div class="col-md-2">
+                            <button class="btn btn-info w-100">TRA CỨU</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <table class="table table-bordered" id="resultTable">
+                <thead class="table-light">
+                    <tr>
+                        <th style="width:6%">STT</th>
+                        <th style="width:22%">Tỉnh/Thành phố</th>
+                        <th style="width:72%">Thông tin liên hệ</th>
+                    </tr>
+                </thead>
+                <tbody id="resultBody">
+                    <tr data-city="1">
+                        <td>1</td>
+                        <td>Thành phố Hà Nội</td>
+                        <td>
+                            <table class="table table-borderless mb-0">
+                                <tr><td><b>Tên phòng</b></td><td>Phòng Đăng ký kinh doanh và Tài chính doanh nghiệp</td></tr>
+                                <tr><td><b>Địa chỉ</b></td><td>	Khu liên cơ Vân Hồ - 52 Lê Đại Hành, Phường Lê Đại Hành, Quận Hai Bà Trưng, Thành phố Hà Nội, Việt Nam</td></tr>
+                                <tr><td><b>Số điện thoại</b></td><td>024.37347512</td></tr>
+                                <tr><td><b>Email</b></td><td>pdkkdtcdn_sotc@hanoi.gov.vn</td></tr>
+                                <tr><td><b>Website</b></td><td>www.sotaichinh.hanoi.gov.vn</td></tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr data-city="2">
+                        <td>2</td>
+                        <td>Tỉnh Hà Giang</td>
+                        <td>
+                            <table class="table table-borderless mb-0">
+                                <tr><td><b>Tên phòng</b></td><td>Phòng Đăng ký kinh doanh</td></tr>
+                                <tr><td><b>Địa chỉ</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Số điện thoại</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Email</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Website</b></td><td>Đang cập nhật</td></tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr data-city="3">
+                        <td>3</td>
+                        <td>Tỉnh Cao Bằng</td>
+                        <td>
+                            <table class="table table-borderless mb-0">
+                                <tr><td><b>Tên phòng</b></td><td>Phòng Đăng ký kinh doanh</td></tr>
+                                <tr><td><b>Địa chỉ</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Số điện thoại</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Email</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Website</b></td><td>Đang cập nhật</td></tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr data-city="4">
+                        <td>4</td>
+                        <td>Tỉnh Bắc Kạn</td>
+                        <td>
+                            <table class="table table-borderless mb-0">
+                                <tr><td><b>Tên phòng</b></td><td>Phòng Đăng ký kinh doanh</td></tr>
+                                <tr><td><b>Địa chỉ</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Số điện thoại</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Email</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Website</b></td><td>Đang cập nhật</td></tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr data-city="5">
+                        <td>5</td>
+                        <td>Tỉnh Tuyên Quang</td>
+                        <td>
+                            <table class="table table-borderless mb-0">
+                                <tr><td><b>Tên phòng</b></td><td>Phòng Đăng ký kinh doanh</td></tr>
+                                <tr><td><b>Địa chỉ</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Số điện thoại</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Email</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Website</b></td><td>Đang cập nhật</td></tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr data-city="6">
+                        <td>6</td>
+                        <td>Tỉnh Lào Cai</td>
+                        <td>
+                            <table class="table table-borderless mb-0">
+                                <tr><td><b>Tên phòng</b></td><td>Phòng Đăng ký kinh doanh</td></tr>
+                                <tr><td><b>Địa chỉ</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Số điện thoại</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Email</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Website</b></td><td>Đang cập nhật</td></tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr data-city="7">
+                        <td>7</td>
+                        <td>Tỉnh Điện Biên</td>
+                        <td>
+                            <table class="table table-borderless mb-0">
+                                <tr><td><b>Tên phòng</b></td><td>Phòng Đăng ký kinh doanh</td></tr>
+                                <tr><td><b>Địa chỉ</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Số điện thoại</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Email</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Website</b></td><td>Đang cập nhật</td></tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr data-city="8">
+                        <td>8</td>
+                        <td>Tỉnh Lai Châu</td>
+                        <td>
+                            <table class="table table-borderless mb-0">
+                                <tr><td><b>Tên phòng</b></td><td>Phòng Đăng ký kinh doanh</td></tr>
+                                <tr><td><b>Địa chỉ</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Số điện thoại</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Email</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Website</b></td><td>Đang cập nhật</td></tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr data-city="9">
+                        <td>9</td>
+                        <td>Tỉnh Sơn La</td>
+                        <td>
+                            <table class="table table-borderless mb-0">
+                                <tr><td><b>Tên phòng</b></td><td>Phòng Đăng ký kinh doanh</td></tr>
+                                <tr><td><b>Địa chỉ</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Số điện thoại</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Email</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Website</b></td><td>Đang cập nhật</td></tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr data-city="10">
+                        <td>10</td>
+                        <td>Tỉnh Yên Bái</td>
+                        <td>
+                            <table class="table table-borderless mb-0">
+                                <tr><td><b>Tên phòng</b></td><td>Phòng Đăng ký kinh doanh</td></tr>
+                                <tr><td><b>Địa chỉ</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Số điện thoại</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Email</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Website</b></td><td>Đang cập nhật</td></tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr data-city="11">
+                        <td>11</td>
+                        <td>Tỉnh Hoà Bình</td>
+                        <td>
+                            <table class="table table-borderless mb-0">
+                                <tr><td><b>Tên phòng</b></td><td>Phòng Đăng ký kinh doanh</td></tr>
+                                <tr><td><b>Địa chỉ</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Số điện thoại</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Email</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Website</b></td><td>Đang cập nhật</td></tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr data-city="12">
+                        <td>12</td>
+                        <td>Tỉnh Thái Nguyên</td>
+                        <td>
+                            <table class="table table-borderless mb-0">
+                                <tr><td><b>Tên phòng</b></td><td>Phòng Đăng ký kinh doanh</td></tr>
+                                <tr><td><b>Địa chỉ</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Số điện thoại</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Email</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Website</b></td><td>Đang cập nhật</td></tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr data-city="13">
+                        <td>13</td>
+                        <td>Tỉnh Lạng Sơn</td>
+                        <td>
+                            <table class="table table-borderless mb-0">
+                                <tr><td><b>Tên phòng</b></td><td>Phòng Đăng ký kinh doanh</td></tr>
+                                <tr><td><b>Địa chỉ</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Số điện thoại</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Email</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Website</b></td><td>Đang cập nhật</td></tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr data-city="14">
+                        <td>14</td>
+                        <td>Tỉnh Quảng Ninh</td>
+                        <td>
+                            <table class="table table-borderless mb-0">
+                                <tr><td><b>Tên phòng</b></td><td>Phòng Đăng ký kinh doanh</td></tr>
+                                <tr><td><b>Địa chỉ</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Số điện thoại</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Email</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Website</b></td><td>Đang cập nhật</td></tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr data-city="15">
+                        <td>15</td>
+                        <td>Tỉnh Bắc Giang</td>
+                        <td>
+                            <table class="table table-borderless mb-0">
+                                <tr><td><b>Tên phòng</b></td><td>Phòng Đăng ký kinh doanh</td></tr>
+                                <tr><td><b>Địa chỉ</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Số điện thoại</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Email</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Website</b></td><td>Đang cập nhật</td></tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr data-city="16">
+                        <td>16</td>
+                        <td>Tỉnh Phú Thọ</td>
+                        <td>
+                            <table class="table table-borderless mb-0">
+                                <tr><td><b>Tên phòng</b></td><td>Phòng Đăng ký kinh doanh</td></tr>
+                                <tr><td><b>Địa chỉ</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Số điện thoại</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Email</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Website</b></td><td>Đang cập nhật</td></tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr data-city="17">
+                        <td>17</td>
+                        <td>Tỉnh Vĩnh Phúc</td>
+                        <td>
+                            <table class="table table-borderless mb-0">
+                                <tr><td><b>Tên phòng</b></td><td>Phòng Đăng ký kinh doanh</td></tr>
+                                <tr><td><b>Địa chỉ</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Số điện thoại</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Email</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Website</b></td><td>Đang cập nhật</td></tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr data-city="18">
+                        <td>18</td>
+                        <td>Tỉnh Bắc Ninh</td>
+                        <td>
+                            <table class="table table-borderless mb-0">
+                                <tr><td><b>Tên phòng</b></td><td>Phòng Đăng ký kinh doanh</td></tr>
+                                <tr><td><b>Địa chỉ</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Số điện thoại</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Email</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Website</b></td><td>Đang cập nhật</td></tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr data-city="19">
+                        <td>19</td>
+                        <td>Tỉnh Hải Dương</td>
+                        <td>
+                            <table class="table table-borderless mb-0">
+                                <tr><td><b>Tên phòng</b></td><td>Phòng Đăng ký kinh doanh</td></tr>
+                                <tr><td><b>Địa chỉ</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Số điện thoại</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Email</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Website</b></td><td>Đang cập nhật</td></tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr data-city="20">
+                        <td>20</td>
+                        <td>Thành phố Hải Phòng</td>
+                        <td>
+                            <table class="table table-borderless mb-0">
+                                <tr><td><b>Tên phòng</b></td><td>Phòng Đăng ký kinh doanh</td></tr>
+                                <tr><td><b>Địa chỉ</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Số điện thoại</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Email</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Website</b></td><td>Đang cập nhật</td></tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr data-city="21">
+                        <td>21</td>
+                        <td>Tỉnh Hưng Yên</td>
+                        <td>
+                            <table class="table table-borderless mb-0">
+                                <tr><td><b>Tên phòng</b></td><td>Phòng Đăng ký kinh doanh</td></tr>
+                                <tr><td><b>Địa chỉ</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Số điện thoại</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Email</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Website</b></td><td>Đang cập nhật</td></tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr data-city="22">
+                        <td>22</td>
+                        <td>Tỉnh Thái Bình</td>
+                        <td>
+                            <table class="table table-borderless mb-0">
+                                <tr><td><b>Tên phòng</b></td><td>Phòng Đăng ký kinh doanh</td></tr>
+                                <tr><td><b>Địa chỉ</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Số điện thoại</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Email</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Website</b></td><td>Đang cập nhật</td></tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr data-city="23">
+                        <td>23</td>
+                        <td>Tỉnh Hà Nam</td>
+                        <td>
+                            <table class="table table-borderless mb-0">
+                                <tr><td><b>Tên phòng</b></td><td>Phòng Đăng ký kinh doanh</td></tr>
+                                <tr><td><b>Địa chỉ</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Số điện thoại</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Email</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Website</b></td><td>Đang cập nhật</td></tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr data-city="24">
+                        <td>24</td>
+                        <td>Tỉnh Nam Định</td>
+                        <td>
+                            <table class="table table-borderless mb-0">
+                                <tr><td><b>Tên phòng</b></td><td>Phòng Đăng ký kinh doanh</td></tr>
+                                <tr><td><b>Địa chỉ</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Số điện thoại</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Email</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Website</b></td><td>Đang cập nhật</td></tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr data-city="25">
+                        <td>25</td>
+                        <td>Tỉnh Ninh Bình</td>
+                        <td>
+                            <table class="table table-borderless mb-0">
+                                <tr><td><b>Tên phòng</b></td><td>Phòng Đăng ký kinh doanh</td></tr>
+                                <tr><td><b>Địa chỉ</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Số điện thoại</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Email</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Website</b></td><td>Đang cập nhật</td></tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr data-city="26">
+                        <td>26</td>
+                        <td>Tỉnh Thanh Hoá</td>
+                        <td>
+                            <table class="table table-borderless mb-0">
+                                <tr><td><b>Tên phòng</b></td><td>Phòng Đăng ký kinh doanh</td></tr>
+                                <tr><td><b>Địa chỉ</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Số điện thoại</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Email</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Website</b></td><td>Đang cập nhật</td></tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr data-city="27">
+                        <td>27</td>
+                        <td>Tỉnh Nghệ An</td>
+                        <td>
+                            <table class="table table-borderless mb-0">
+                                <tr><td><b>Tên phòng</b></td><td>Phòng Đăng ký kinh doanh</td></tr>
+                                <tr><td><b>Địa chỉ</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Số điện thoại</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Email</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Website</b></td><td>Đang cập nhật</td></tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr data-city="28">
+                        <td>28</td>
+                        <td>Tỉnh Hà Tĩnh</td>
+                        <td>
+                            <table class="table table-borderless mb-0">
+                                <tr><td><b>Tên phòng</b></td><td>Phòng Đăng ký kinh doanh</td></tr>
+                                <tr><td><b>Địa chỉ</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Số điện thoại</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Email</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Website</b></td><td>Đang cập nhật</td></tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr data-city="29">
+                        <td>29</td>
+                        <td>Tỉnh Quảng Bình</td>
+                        <td>
+                            <table class="table table-borderless mb-0">
+                                <tr><td><b>Tên phòng</b></td><td>Phòng Đăng ký kinh doanh</td></tr>
+                                <tr><td><b>Địa chỉ</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Số điện thoại</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Email</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Website</b></td><td>Đang cập nhật</td></tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr data-city="30">
+                        <td>30</td>
+                        <td>Tỉnh Quảng Trị</td>
+                        <td>
+                            <table class="table table-borderless mb-0">
+                                <tr><td><b>Tên phòng</b></td><td>Phòng Đăng ký kinh doanh</td></tr>
+                                <tr><td><b>Địa chỉ</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Số điện thoại</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Email</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Website</b></td><td>Đang cập nhật</td></tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr data-city="31">
+                        <td>31</td>
+                        <td>Tỉnh Thừa Thiên Huế</td>
+                        <td>
+                            <table class="table table-borderless mb-0">
+                                <tr><td><b>Tên phòng</b></td><td>Phòng Đăng ký kinh doanh</td></tr>
+                                <tr><td><b>Địa chỉ</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Số điện thoại</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Email</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Website</b></td><td>Đang cập nhật</td></tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr data-city="32">
+                        <td>32</td>
+                        <td>Thành phố Đà Nẵng</td>
+                        <td>
+                            <table class="table table-borderless mb-0">
+                                <tr><td><b>Tên phòng</b></td><td>Phòng Đăng ký kinh doanh</td></tr>
+                                <tr><td><b>Địa chỉ</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Số điện thoại</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Email</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Website</b></td><td>Đang cập nhật</td></tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr data-city="33">
+                        <td>33</td>
+                        <td>Tỉnh Quảng Nam</td>
+                        <td>
+                            <table class="table table-borderless mb-0">
+                                <tr><td><b>Tên phòng</b></td><td>Phòng Đăng ký kinh doanh</td></tr>
+                                <tr><td><b>Địa chỉ</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Số điện thoại</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Email</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Website</b></td><td>Đang cập nhật</td></tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr data-city="34">
+                        <td>34</td>
+                        <td>Tỉnh Quảng Ngãi</td>
+                        <td>
+                            <table class="table table-borderless mb-0">
+                                <tr><td><b>Tên phòng</b></td><td>Phòng Đăng ký kinh doanh</td></tr>
+                                <tr><td><b>Địa chỉ</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Số điện thoại</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Email</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Website</b></td><td>Đang cập nhật</td></tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr data-city="35">
+                        <td>35</td>
+                        <td>Tỉnh Bình Định</td>
+                        <td>
+                            <table class="table table-borderless mb-0">
+                                <tr><td><b>Tên phòng</b></td><td>Phòng Đăng ký kinh doanh</td></tr>
+                                <tr><td><b>Địa chỉ</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Số điện thoại</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Email</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Website</b></td><td>Đang cập nhật</td></tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr data-city="36">
+                        <td>36</td>
+                        <td>Tỉnh Phú Yên</td>
+                        <td>
+                            <table class="table table-borderless mb-0">
+                                <tr><td><b>Tên phòng</b></td><td>Phòng Đăng ký kinh doanh</td></tr>
+                                <tr><td><b>Địa chỉ</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Số điện thoại</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Email</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Website</b></td><td>Đang cập nhật</td></tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr data-city="37">
+                        <td>37</td>
+                        <td>Tỉnh Khánh Hoà</td>
+                        <td>
+                            <table class="table table-borderless mb-0">
+                                <tr><td><b>Tên phòng</b></td><td>Phòng Đăng ký kinh doanh</td></tr>
+                                <tr><td><b>Địa chỉ</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Số điện thoại</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Email</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Website</b></td><td>Đang cập nhật</td></tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr data-city="38">
+                        <td>38</td>
+                        <td>Tỉnh Ninh Thuận</td>
+                        <td>
+                            <table class="table table-borderless mb-0">
+                                <tr><td><b>Tên phòng</b></td><td>Phòng Đăng ký kinh doanh</td></tr>
+                                <tr><td><b>Địa chỉ</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Số điện thoại</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Email</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Website</b></td><td>Đang cập nhật</td></tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr data-city="39">
+                        <td>39</td>
+                        <td>Tỉnh Bình Thuận</td>
+                        <td>
+                            <table class="table table-borderless mb-0">
+                                <tr><td><b>Tên phòng</b></td><td>Phòng Đăng ký kinh doanh</td></tr>
+                                <tr><td><b>Địa chỉ</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Số điện thoại</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Email</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Website</b></td><td>Đang cập nhật</td></tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr data-city="40">
+                        <td>40</td>
+                        <td>Tỉnh Kon Tum</td>
+                        <td>
+                            <table class="table table-borderless mb-0">
+                                <tr><td><b>Tên phòng</b></td><td>Phòng Đăng ký kinh doanh</td></tr>
+                                <tr><td><b>Địa chỉ</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Số điện thoại</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Email</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Website</b></td><td>Đang cập nhật</td></tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr data-city="41">
+                        <td>41</td>
+                        <td>Tỉnh Gia Lai</td>
+                        <td>
+                            <table class="table table-borderless mb-0">
+                                <tr><td><b>Tên phòng</b></td><td>Phòng Đăng ký kinh doanh</td></tr>
+                                <tr><td><b>Địa chỉ</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Số điện thoại</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Email</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Website</b></td><td>Đang cập nhật</td></tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr data-city="42">
+                        <td>42</td>
+                        <td>Tỉnh Đắk Lắk</td>
+                        <td>
+                            <table class="table table-borderless mb-0">
+                                <tr><td><b>Tên phòng</b></td><td>Phòng Đăng ký kinh doanh</td></tr>
+                                <tr><td><b>Địa chỉ</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Số điện thoại</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Email</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Website</b></td><td>Đang cập nhật</td></tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr data-city="43">
+                        <td>43</td>
+                        <td>Tỉnh Đắk Nông</td>
+                        <td>
+                            <table class="table table-borderless mb-0">
+                                <tr><td><b>Tên phòng</b></td><td>Phòng Đăng ký kinh doanh</td></tr>
+                                <tr><td><b>Địa chỉ</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Số điện thoại</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Email</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Website</b></td><td>Đang cập nhật</td></tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr data-city="44">
+                        <td>44</td>
+                        <td>Tỉnh Lâm Đồng</td>
+                        <td>
+                            <table class="table table-borderless mb-0">
+                                <tr><td><b>Tên phòng</b></td><td>Phòng Đăng ký kinh doanh</td></tr>
+                                <tr><td><b>Địa chỉ</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Số điện thoại</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Email</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Website</b></td><td>Đang cập nhật</td></tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr data-city="45">
+                        <td>45</td>
+                        <td>Tỉnh Bình Phước</td>
+                        <td>
+                            <table class="table table-borderless mb-0">
+                                <tr><td><b>Tên phòng</b></td><td>Phòng Đăng ký kinh doanh</td></tr>
+                                <tr><td><b>Địa chỉ</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Số điện thoại</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Email</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Website</b></td><td>Đang cập nhật</td></tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr data-city="46">
+                        <td>46</td>
+                        <td>Tỉnh Tây Ninh</td>
+                        <td>
+                            <table class="table table-borderless mb-0">
+                                <tr><td><b>Tên phòng</b></td><td>Phòng Đăng ký kinh doanh</td></tr>
+                                <tr><td><b>Địa chỉ</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Số điện thoại</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Email</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Website</b></td><td>Đang cập nhật</td></tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr data-city="47">
+                        <td>47</td>
+                        <td>Tỉnh Bình Dương</td>
+                        <td>
+                            <table class="table table-borderless mb-0">
+                                <tr><td><b>Tên phòng</b></td><td>Phòng Đăng ký kinh doanh</td></tr>
+                                <tr><td><b>Địa chỉ</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Số điện thoại</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Email</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Website</b></td><td>Đang cập nhật</td></tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr data-city="48">
+                        <td>48</td>
+                        <td>Tỉnh Đồng Nai</td>
+                        <td>
+                            <table class="table table-borderless mb-0">
+                                <tr><td><b>Tên phòng</b></td><td>Phòng Đăng ký kinh doanh</td></tr>
+                                <tr><td><b>Địa chỉ</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Số điện thoại</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Email</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Website</b></td><td>Đang cập nhật</td></tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr data-city="49">
+                        <td>49</td>
+                        <td>Tỉnh Bà Rịa - Vũng Tàu</td>
+                        <td>
+                            <table class="table table-borderless mb-0">
+                                <tr><td><b>Tên phòng</b></td><td>Phòng Đăng ký kinh doanh</td></tr>
+                                <tr><td><b>Địa chỉ</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Số điện thoại</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Email</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Website</b></td><td>Đang cập nhật</td></tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr data-city="50">
+                        <td>50</td>
+                        <td>Thành phố Hồ Chí Minh</td>
+                        <td>
+                            <table class="table table-borderless mb-0">
+                                <tr><td><b>Tên phòng</b></td><td>Phòng Đăng ký kinh doanh</td></tr>
+                                <tr><td><b>Địa chỉ</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Số điện thoại</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Email</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Website</b></td><td>Đang cập nhật</td></tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr data-city="51">
+                        <td>51</td>
+                        <td>Tỉnh Long An</td>
+                        <td>
+                            <table class="table table-borderless mb-0">
+                                <tr><td><b>Tên phòng</b></td><td>Phòng Đăng ký kinh doanh</td></tr>
+                                <tr><td><b>Địa chỉ</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Số điện thoại</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Email</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Website</b></td><td>Đang cập nhật</td></tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr data-city="52">
+                        <td>52</td>
+                        <td>Tỉnh Tiền Giang</td>
+                        <td>
+                            <table class="table table-borderless mb-0">
+                                <tr><td><b>Tên phòng</b></td><td>Phòng Đăng ký kinh doanh</td></tr>
+                                <tr><td><b>Địa chỉ</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Số điện thoại</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Email</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Website</b></td><td>Đang cập nhật</td></tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr data-city="53">
+                        <td>53</td>
+                        <td>Tỉnh Bến Tre</td>
+                        <td>
+                            <table class="table table-borderless mb-0">
+                                <tr><td><b>Tên phòng</b></td><td>Phòng Đăng ký kinh doanh</td></tr>
+                                <tr><td><b>Địa chỉ</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Số điện thoại</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Email</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Website</b></td><td>Đang cập nhật</td></tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr data-city="54">
+                        <td>54</td>
+                        <td>Tỉnh Trà Vinh</td>
+                        <td>
+                            <table class="table table-borderless mb-0">
+                                <tr><td><b>Tên phòng</b></td><td>Phòng Đăng ký kinh doanh</td></tr>
+                                <tr><td><b>Địa chỉ</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Số điện thoại</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Email</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Website</b></td><td>Đang cập nhật</td></tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr data-city="55">
+                        <td>55</td>
+                        <td>Tỉnh Vĩnh Long</td>
+                        <td>
+                            <table class="table table-borderless mb-0">
+                                <tr><td><b>Tên phòng</b></td><td>Phòng Đăng ký kinh doanh</td></tr>
+                                <tr><td><b>Địa chỉ</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Số điện thoại</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Email</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Website</b></td><td>Đang cập nhật</td></tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr data-city="56">
+                        <td>56</td>
+                        <td>Tỉnh Đồng Tháp</td>
+                        <td>
+                            <table class="table table-borderless mb-0">
+                                <tr><td><b>Tên phòng</b></td><td>Phòng Đăng ký kinh doanh</td></tr>
+                                <tr><td><b>Địa chỉ</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Số điện thoại</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Email</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Website</b></td><td>Đang cập nhật</td></tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr data-city="57">
+                        <td>57</td>
+                        <td>Tỉnh An Giang</td>
+                        <td>
+                            <table class="table table-borderless mb-0">
+                                <tr><td><b>Tên phòng</b></td><td>Phòng Đăng ký kinh doanh</td></tr>
+                                <tr><td><b>Địa chỉ</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Số điện thoại</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Email</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Website</b></td><td>Đang cập nhật</td></tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr data-city="58">
+                        <td>58</td>
+                        <td>Tỉnh Kiên Giang</td>
+                        <td>
+                            <table class="table table-borderless mb-0">
+                                <tr><td><b>Tên phòng</b></td><td>Phòng Đăng ký kinh doanh</td></tr>
+                                <tr><td><b>Địa chỉ</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Số điện thoại</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Email</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Website</b></td><td>Đang cập nhật</td></tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr data-city="59">
+                        <td>59</td>
+                        <td>Thành phố Cần Thơ</td>
+                        <td>
+                            <table class="table table-borderless mb-0">
+                                <tr><td><b>Tên phòng</b></td><td>Phòng Đăng ký kinh doanh</td></tr>
+                                <tr><td><b>Địa chỉ</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Số điện thoại</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Email</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Website</b></td><td>Đang cập nhật</td></tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr data-city="60">
+                        <td>60</td>
+                        <td>Tỉnh Hậu Giang</td>
+                        <td>
+                            <table class="table table-borderless mb-0">
+                                <tr><td><b>Tên phòng</b></td><td>Phòng Đăng ký kinh doanh</td></tr>
+                                <tr><td><b>Địa chỉ</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Số điện thoại</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Email</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Website</b></td><td>Đang cập nhật</td></tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr data-city="61">
+                        <td>61</td>
+                        <td>Tỉnh Sóc Trăng</td>
+                        <td>
+                            <table class="table table-borderless mb-0">
+                                <tr><td><b>Tên phòng</b></td><td>Phòng Đăng ký kinh doanh</td></tr>
+                                <tr><td><b>Địa chỉ</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Số điện thoại</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Email</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Website</b></td><td>Đang cập nhật</td></tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr data-city="62">
+                        <td>62</td>
+                        <td>Tỉnh Bạc Liêu</td>
+                        <td>
+                            <table class="table table-borderless mb-0">
+                                <tr><td><b>Tên phòng</b></td><td>Phòng Đăng ký kinh doanh</td></tr>
+                                <tr><td><b>Địa chỉ</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Số điện thoại</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Email</b></td><td>Đang cập nhật</td></tr>
+                                <tr><td><b>Website</b></td><td>Đang cập nhật</td></tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr data-city="63">
+                        <td>63</td>
+                        <td>Tỉnh Cà Mau</td>
+                        <td>
+                            <table class="table table-borderless mb-0">
+                                <tr><td><b>Tên phòng</b></td><td>Phòng Đăng ký kinh doanh</td></tr>
+                                <tr><td><b>Địa chỉ</b></td><td>	Số 93 Lý Thường Kiệt, Phường 5, TP. Cà Mau, tỉnh Cà Mau</td></tr>
+                                <tr><td><b>Số điện thoại</b></td><td>0290.3830774</td></tr>
+                                <tr><td><b>Email</b></td><td>phongdangkykinhdoanhcamau@gmail.com</td></tr>
+                                <tr><td><b>Website</b></td><td>http://sokhdt.camau.gov.vn/wps/portal/</td></tr>
+                            </table>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-3">
+            <div class="card mb-4">
+                <div class="card-header bg-white fw-bold">Thông tin hỗ trợ</div>
+                <div class="card-body">
+                    <p>Hộp thư hỗ trợ đăng ký doanh nghiệp, dịch vụ thông tin, báo cáo điện tử, thanh toán điện tử</p>
+                    <div class="mb-2"><span class="badge bg-light text-dark"><i class="fa fa-envelope text-primary"></i> hotro@dangkykinhdoanh.gov.vn</span></div>
+                    <div class="mb-2"><span class="badge bg-light text-dark"><i class="fa fa-envelope text-primary"></i> dichvuthongtin@dangkykinhdoanh.gov.vn</span></div>
+                    <div class="mb-2"><span class="badge bg-light text-dark"><i class="fa fa-envelope text-primary"></i> hotrothanhtoan@dangkykinhdoanh.gov.vn</span></div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header bg-white fw-bold">Truy cập nhanh</div>
+                <div class="card-body p-2">
+                    <a href="#" class="btn btn-outline-primary w-100 mb-2">DỊCH VỤ THÔNG TIN</a>
+                    <a href="#" class="btn btn-outline-primary w-100">ĐĂNG KÝ QUA MẠNG</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .breadcrumb {
+        background: none;
+        padding: 0;
+        margin-bottom: 1rem;
+    }
+    .card-header {
+        font-size: 1.1rem;
+    }
+    /* .badge {
+        font-size: 1em;
+        padding: 0.5em 0.7em;
+        margin-bottom: 0.3em;
+    } */
+     .card-body {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem; /* Khoảng cách giữa các badge */
+    }
+
+    .badge {
+        max-width: 100%; /* Đảm bảo badge không vượt quá container */
+        overflow: hidden; /* Ẩn nội dung vượt quá */
+        text-overflow: ellipsis; /* Thêm dấu ba chấm nếu văn bản quá dài */
+    }
+</style>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const citySelect = document.querySelector('select.form-select');
+        const unitSelect = document.getElementById('unitSelect');
+        const rows = document.querySelectorAll('#resultBody tr');
+        const filterBtn = document.querySelector('.btn-info');
+
+        function filterTable() {
+            const city = citySelect.value;
+            const unit = unitSelect.value;
+            rows.forEach(row => {
+                const matchCity = city === '--- Chọn Tỉnh/Thành phố ---' || row.getAttribute('data-city') === city;
+                const matchUnit = unit === '--- Chọn đơn vị hành chính ---' || row.getAttribute('data-unit') === unit;
+                if (matchCity && matchUnit) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        }
+
+        filterBtn.addEventListener('click', filterTable);
+    });
+</script>

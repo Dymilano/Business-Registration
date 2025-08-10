@@ -1,0 +1,203 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Cổng thông tin đăng ký doanh nghiệp trực tuyến">
+    <meta name="author" content="DoanhNghiepPortal">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <title>@ViewData["Title"] - Cổng Thông Tin Doanh Nghiệp</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="~/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="~/assets/css/templatemo-space-dynamic.css" />
+    <link rel="stylesheet" href="~/assets/css/fontawesome.css" />
+    <link rel="stylesheet" href="~/assets/css/owl.css" />
+    <link rel="stylesheet" href="~/assets/css/animated.css" />
+    @await RenderSectionAsync("Styles", required: false)
+</head>
+
+<body>
+    <!-- ***** Preloader Start ***** -->
+    <div id="js-preloader" class="js-preloader">
+        <div class="preloader-inner">
+            <span class="dot"></span>
+            <div class="dots">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+    <!-- ***** Preloader End ***** -->
+
+    <!-- ***** Header Area Start ***** -->
+    <header class="header-area header-sticky wow slideInDown" data-wow-duration="0.75s" data-wow-delay="0s">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="main-nav">
+                        <!-- ***** Logo Start ***** -->
+                        <a href="/" class="logo">
+                            <h4>Doanh<span>Nghiep</span></h4>
+                        </a>
+                        <!-- ***** Logo End ***** -->
+                        <!-- ***** Menu Start ***** -->
+                        <ul class="nav">
+                            <li class="scroll-to-section"><a href="/" class="active">Trang Chủ</a></li>
+                            <li class="scroll-to-section dropdown">
+                                <a href="/Home/About" class="dropdown-toggle" id="aboutDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Giới Thiệu</a>
+                                <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
+                                    <li><a class="dropdown-item" href="/Home/NationalPortal">Cổng thông tin quốc gia về đăng ký doanh nghiệp</a></li>
+                                    <li><a class="dropdown-item" href="/Home/PrivateEnterprise">Cục Phát triển doanh nghiệp tư nhân và kinh tế tập thể</a></li>
+                                    <li><a class="dropdown-item" href="/Home/InfoCenter">Trung tâm Thông tin doanh nghiệp, kinh tế tập thể, hộ kinh doanh</a></li>
+                                    <li><a class="dropdown-item" href="/Home/AgencyOffices">Cơ quan đăng ký kinh doanh các tỉnh, thành phố</a></li>
+                                    <li><a class="dropdown-item" href="/Home/Vision">Tầm nhìn - Sứ mệnh - Giá trị</a></li>
+                                    <li><a class="dropdown-item" href="/Home/Reform">Cải cách đăng ký kinh doanh</a></li>
+                                </ul>
+                            </li>
+                            @if (User.Identity?.IsAuthenticated == true)
+                            {
+                                <li class="scroll-to-section"><a href="/Services/DangKyDoanhNghiep">Đăng Ký DN</a></li>
+                                <li class="scroll-to-section"><a href="/Services/DangKyKinhDoanh">Đăng Ký KD</a></li>
+                            }
+                            <li class="scroll-to-section"><a href="/Home/Guide">Hướng Dẫn</a></li>
+                            <li class="scroll-to-section"><a href="/Home/News">Tin Tức</a></li>
+                            <li class="scroll-to-section"><a href="/Business/Search">Tra Cứu DN</a></li>
+
+                            @if (User.Identity?.IsAuthenticated == true)
+                            {
+                                <li class="scroll-to-section dropdown">
+                                    <a href="#" class="dropdown-toggle user-dropdown" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="fa fa-user-circle"></i> 
+                                        <span class="user-name">@User.Identity.Name</span>
+                                        <i class="fa fa-chevron-down"></i>
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="userDropdown">
+                                        <li><a class="dropdown-item" href="@Url.Action("Profile", "Account")"><i class="fa fa-user-circle"></i> Hồ sơ</a></li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li>
+                                            <form asp-controller="Account" asp-action="Logout" method="post" style="display: inline;">
+                                                <button type="submit" class="dropdown-item">
+                                                    <i class="fa fa-sign-out"></i> Đăng xuất
+                                                </button>
+                                            </form>
+                                        </li>
+                                    </ul>
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="scroll-to-section">
+                                    <div class="main-red-button"><a href="/Account/Login">Đăng Nhập</a></div>
+                                </li>
+                            }
+                        </ul>
+                        <a class='menu-trigger'>
+                            <span>Menu</span>
+                        </a>
+                        <!-- ***** Menu End ***** -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ***** Header Area End ***** -->
+
+    <main role="main">
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div class="alert alert-success alert-dismissible fade show" role="alert" style="margin-top: 100px; margin-bottom: -50px;">
+                <i class="fa fa-check-circle"></i> @TempData["SuccessMessage"]
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        }
+        @RenderBody()
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.25s">
+                    <p>Cổng Thông Tin Doanh Nghiệp.Team 5.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <style>
+        .user-dropdown {
+            display: flex !important;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 15px !important;
+            background: linear-gradient(135deg, #007bff, #0056b3) !important;
+            border-radius: 25px !important;
+            color: white !important;
+            text-decoration: none !important;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0, 123, 255, 0.3);
+        }
+        
+        .user-dropdown:hover {
+            background: linear-gradient(135deg, #0056b3, #004085) !important;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 123, 255, 0.4);
+            color: white !important;
+        }
+        
+        .user-dropdown .user-name {
+            font-weight: 600;
+            font-size: 14px;
+        }
+        
+        .user-dropdown .fa-chevron-down {
+            font-size: 12px;
+            transition: transform 0.3s ease;
+        }
+        
+        .user-dropdown.show .fa-chevron-down {
+            transform: rotate(180deg);
+        }
+        
+        .dropdown-menu {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            padding: 10px 0;
+        }
+        
+        .dropdown-item {
+            padding: 10px 20px;
+            border-radius: 8px;
+            margin: 2px 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .dropdown-item:hover {
+            background-color: #f8f9fa;
+            transform: translateX(5px);
+        }
+        
+        .dropdown-item i {
+            margin-right: 8px;
+            width: 16px;
+        }
+    </style>
+
+    <!-- Scripts -->
+    <script src="~/vendor/jquery/jquery.min.js"></script>
+    <script src="~/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/assets/js/owl-carousel.js"></script>
+    <script src="~/assets/js/animation.js"></script>
+    <script src="~/assets/js/imagesloaded.js"></script>
+    <script src="~/assets/js/templatemo-custom.js"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

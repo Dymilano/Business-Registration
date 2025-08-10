@@ -1,0 +1,146 @@
+@model DoanhNghiepPortal.Models.UserModel
+@{
+    ViewData["Title"] = "Đăng Ký";
+    Layout = "_Layout";
+}
+
+<div class="container" style="margin-top: 150px; padding-top: 30px;">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card shadow-lg">
+                <div class="card-header bg-success text-white text-center">
+                    <h4 class="mb-0">
+                        <i class="fa fa-user-plus"></i> Đăng Ký Tài Khoản
+                    </h4>
+                </div>
+                <div class="card-body p-4">
+                    <form asp-action="Register" method="post">
+                        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label asp-for="Username" class="form-label">
+                                        <i class="fa fa-user"></i> @Html.DisplayNameFor(m => m.Username)
+                                    </label>
+                                    <input asp-for="Username" class="form-control" placeholder="Nhập tên đăng nhập" />
+                                    <span asp-validation-for="Username" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label asp-for="Email" class="form-label">
+                                        <i class="fa fa-envelope"></i> @Html.DisplayNameFor(m => m.Email)
+                                    </label>
+                                    <input asp-for="Email" class="form-control" placeholder="Nhập email" />
+                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label asp-for="FullName" class="form-label">
+                                        <i class="fa fa-id-card"></i> @Html.DisplayNameFor(m => m.FullName)
+                                    </label>
+                                    <input asp-for="FullName" class="form-control" placeholder="Nhập họ và tên" />
+                                    <span asp-validation-for="FullName" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label asp-for="PhoneNumber" class="form-label">
+                                        <i class="fa fa-phone"></i> @Html.DisplayNameFor(m => m.PhoneNumber)
+                                    </label>
+                                    <input asp-for="PhoneNumber" class="form-control" placeholder="Nhập số điện thoại" />
+                                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label asp-for="Password" class="form-label">
+                                        <i class="fa fa-lock"></i> @Html.DisplayNameFor(m => m.Password)
+                                    </label>
+                                    <input asp-for="Password" class="form-control" placeholder="Nhập mật khẩu" />
+                                    <span asp-validation-for="Password" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label asp-for="ConfirmPassword" class="form-label">
+                                        <i class="fa fa-lock"></i> @Html.DisplayNameFor(m => m.ConfirmPassword)
+                                    </label>
+                                    <input asp-for="ConfirmPassword" class="form-control" placeholder="Xác nhận mật khẩu" />
+                                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-success btn-lg">
+                                <i class="fa fa-user-plus"></i> Đăng Ký
+                            </button>
+                        </div>
+                    </form>
+                    
+                    <hr class="my-4" />
+                    
+                    <div class="text-center">
+                        <p class="mb-2">Đã có tài khoản?</p>
+                        <a href="@Url.Action("Login", "Account")" class="btn btn-outline-primary">
+                            <i class="fa fa-sign-in"></i> Đăng Nhập
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .card {
+        border: none;
+        border-radius: 15px;
+    }
+    
+    .card-header {
+        border-radius: 15px 15px 0 0 !important;
+        background: linear-gradient(135deg, #28a745, #20c997) !important;
+    }
+    
+    .form-control {
+        border-radius: 10px;
+        border: 2px solid #e9ecef;
+        padding: 12px 15px;
+        transition: all 0.3s ease;
+    }
+    
+    .form-control:focus {
+        border-color: #28a745;
+        box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+    }
+    
+    .btn {
+        border-radius: 10px;
+        padding: 12px 20px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+    
+    .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    
+    .text-danger {
+        font-size: 0.875em;
+    }
+</style>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+} 

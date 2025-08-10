@@ -1,0 +1,230 @@
+@model List<BusinessRegistrationModel>
+@{
+    ViewData["Title"] = "Quản Lý Hồ Sơ Đăng Ký Doanh Nghiệp";
+    Layout = "_AdminLayout";
+}
+
+<div class="container-fluid">
+    <!-- Header -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h4 class="mb-1">Quản Lý Hồ Sơ Đăng Ký Doanh Nghiệp</h4>
+            <p class="text-muted mb-0">Tổng cộng @Model.Count hồ sơ</p>
+        </div>
+    </div>
+
+    <!-- Filters -->
+    <div class="table-card mb-4">
+        <div class="table-header">
+            <form method="get" class="row g-3">
+                <div class="col-md-4">
+                    <label class="form-label">Tìm kiếm</label>
+                    <input type="text" class="form-control" name="search" value="@ViewBag.Search" placeholder="Tên DN, người đại diện, email...">
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label">Trạng thái</label>
+                    <select class="form-select" name="status">
+                        <option value="">Tất cả</option>
+                        <option value="Chờ duyệt" selected="@(ViewBag.Status == "Chờ duyệt")">Chờ duyệt</option>
+                        <option value="Đã duyệt" selected="@(ViewBag.Status == "Đã duyệt")">Đã duyệt</option>
+                        <option value="Từ chối" selected="@(ViewBag.Status == "Từ chối")">Từ chối</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label">&nbsp;</label>
+                    <div>
+                        <button type="submit" class="btn btn-primary me-2">
+                            <i class="fas fa-search"></i> Tìm kiếm
+                        </button>
+                        <a href="/Admin/BusinessRegistrations" class="btn btn-outline-secondary">
+                            <i class="fas fa-refresh"></i> Làm mới
+                        </a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Table -->
+    <div class="table-card">
+        <div class="table-responsive">
+            <table class="table table-hover mb-0">
+                <thead class="table-light">
+                    <tr>
+                        <th>ID</th>
+                        <th>Tên doanh nghiệp</th>
+                        <th>Loại hình</th>
+                        <th>Người đại diện</th>
+                        <th>Email</th>
+                        <th>Ngày đăng ký</th>
+                        <th>Trạng thái</th>
+                        <th>Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Id</td>
+                            <td>
+                                <div class="fw-bold">@item.BusinessName</div>
+                                <small class="text-muted">@item.BusinessLine</small>
+                            </td>
+                            <td>@item.BusinessType</td>
+                            <td>
+                                <div>@item.Representative</div>
+                                <small class="text-muted">@item.Position</small>
+                            </td>
+                            <td>@item.Email</td>
+                            <td>@item.CreatedAt.ToString("dd/MM/yyyy HH:mm")</td>
+                            <td>
+                                @if (item.Status == "Chờ duyệt")
+                                {
+                                    <span class="status-badge status-pending">Chờ duyệt</span>
+                                }
+                                else if (item.Status == "Đã duyệt")
+                                {
+                                    <span class="status-badge status-approved">Đã duyệt</span>
+                                }
+                                else
+                                {
+                                    <span class="status-badge status-rejected">Từ chối</span>
+                                }
+                            </td>
+                            <td>
+                                <div class="btn-group" role="group">
+                                    <a href="/Admin/BusinessRegistrationDetail/@item.Id" class="btn btn-sm btn-outline-primary" title="Xem chi tiết">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                    <button type="button" class="btn btn-sm btn-outline-success" onclick="updateStatus(@item.Id, 'Đã duyệt')" title="Duyệt">
+                                        <i class="fas fa-check"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-sm btn-outline-danger" onclick="updateStatus(@item.Id, 'Từ chối')" title="Từ chối">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-sm btn-outline-warning" onclick="deleteRegistration(@item.Id)" title="Xóa">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Status Update Modal -->
+<div class="modal fade" id="statusModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Cập nhật trạng thái</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form id="statusForm">
+                    <input type="hidden" id="registrationId">
+                    <input type="hidden" id="newStatus">
+                    <div class="mb-3">
+                        <label class="form-label">Ghi chú</label>
+                        <textarea class="form-control" id="notes" rows="3" placeholder="Nhập ghi chú (tùy chọn)"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                <button type="button" class="btn btn-primary" onclick="submitStatusUpdate()">Cập nhật</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function updateStatus(id, status) {
+            document.getElementById('registrationId').value = id;
+            document.getElementById('newStatus').value = status;
+            document.getElementById('notes').value = '';
+            
+            const modal = new bootstrap.Modal(document.getElementById('statusModal'));
+            modal.show();
+        }
+
+        function submitStatusUpdate() {
+            const id = document.getElementById('registrationId').value;
+            const status = document.getElementById('newStatus').value;
+            const notes = document.getElementById('notes').value;
+
+            fetch('/Admin/UpdateBusinessStatus', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: `id=${id}&status=${status}&notes=${encodeURIComponent(notes)}`
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    showAlert('Thành công', data.message, 'success');
+                    setTimeout(() => {
+                        location.reload();
+                    }, 1500);
+                } else {
+                    showAlert('Lỗi', data.message, 'error');
+                }
+            })
+            .catch(error => {
+                showAlert('Lỗi', 'Có lỗi xảy ra khi cập nhật trạng thái', 'error');
+            });
+
+            const modal = bootstrap.Modal.getInstance(document.getElementById('statusModal'));
+            modal.hide();
+        }
+
+        function deleteRegistration(id) {
+            if (confirm('Bạn có chắc chắn muốn xóa hồ sơ này?')) {
+                fetch('/Admin/DeleteBusinessRegistration', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: `id=${id}`
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        showAlert('Thành công', data.message, 'success');
+                        setTimeout(() => {
+                            location.reload();
+                        }, 1500);
+                    } else {
+                        showAlert('Lỗi', data.message, 'error');
+                    }
+                })
+                .catch(error => {
+                    showAlert('Lỗi', 'Có lỗi xảy ra khi xóa hồ sơ', 'error');
+                });
+            }
+        }
+
+        function showAlert(title, message, type) {
+            const alertDiv = document.createElement('div');
+            alertDiv.className = `alert alert-${type === 'success' ? 'success' : 'danger'} alert-dismissible fade show position-fixed`;
+            alertDiv.style.cssText = 'top: 20px; right: 20px; z-index: 9999; min-width: 300px;';
+            alertDiv.innerHTML = `
+                <strong>${title}</strong><br>
+                ${message}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            `;
+            document.body.appendChild(alertDiv);
+
+            setTimeout(() => {
+                if (alertDiv.parentNode) {
+                    alertDiv.remove();
+                }
+            }, 5000);
+        }
+    </script>
+} 

@@ -1,0 +1,98 @@
+@{
+    ViewData["Title"] = "Test Đăng Ký";
+}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-12">
+            <h2>Test Đăng Ký</h2>
+            <p>Trang này để test các chức năng đăng ký</p>
+            
+            <!-- Form test đơn giản -->
+            <div class="row mb-4">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5>Test Form Submission</h5>
+                        </div>
+                        <div class="card-body">
+                            <form method="post" action="/Services/TestFormSubmission">
+                                <div class="form-group">
+                                    <label for="testData">Test Data:</label>
+                                    <input type="text" class="form-control" id="testData" name="testData" placeholder="Nhập dữ liệu test" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary mt-3">Test Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5>Test Database</h5>
+                        </div>
+                        <div class="card-body">
+                            <p>Test lưu dữ liệu vào database</p>
+                            <form method="post" action="/Services/TestDatabase">
+                                <button type="submit" class="btn btn-success">Test Database</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5>Test Session</h5>
+                        </div>
+                        <div class="card-body">
+                            <p>Test redirect với Session data</p>
+                            <a href="/Services/TestSession" class="btn btn-primary">Test Session</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5>Test Success Page</h5>
+                        </div>
+                        <div class="card-body">
+                            <p>Test trang Success trực tiếp</p>
+                            <a href="/Services/TestSuccess" class="btn btn-success">Test Success</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-4">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5>Đăng Ký Doanh Nghiệp</h5>
+                        </div>
+                        <div class="card-body">
+                            <p>Form đăng ký doanh nghiệp</p>
+                            <a href="/Services/DangKyDoanhNghiep" class="btn btn-info">Đăng Ký Doanh Nghiệp</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5>Đăng Ký Kinh Doanh</h5>
+                        </div>
+                        <div class="card-body">
+                            <p>Form đăng ký hộ kinh doanh</p>
+                            <a href="/Services/DangKyKinhDoanh" class="btn btn-warning">Đăng Ký Kinh Doanh</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 

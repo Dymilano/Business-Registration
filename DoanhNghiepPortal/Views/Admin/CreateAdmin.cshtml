@@ -1,0 +1,126 @@
+@{
+    ViewData["Title"] = "Tạo Tài Khoản Admin";
+    Layout = "_Layout";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">
+                        <i class="fas fa-user-shield me-2"></i>
+                        Tạo Tài Khoản Admin
+                    </h4>
+                </div>
+                <div class="card-body">
+                    <div id="result" class="mb-3"></div>
+                    
+                    <div class="text-center">
+                        <button id="createAdminBtn" class="btn btn-primary btn-lg">
+                            <i class="fas fa-plus-circle me-2"></i>
+                            Tạo Tài Khoản Admin
+                        </button>
+                    </div>
+                    
+                    <div id="adminInfo" class="mt-4" style="display: none;">
+                        <div class="alert alert-success">
+                            <h5><i class="fas fa-check-circle me-2"></i>Tài khoản Admin đã được tạo thành công!</h5>
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <strong>Tên đăng nhập:</strong> <span id="adminUsername"></span>
+                                </div>
+                                <div class="col-md-6">
+                                    <strong>Mật khẩu:</strong> <span id="adminPassword"></span>
+                                </div>
+                            </div>
+                            <div class="row mt-2">
+                                <div class="col-md-6">
+                                    <strong>Email:</strong> <span id="adminEmail"></span>
+                                </div>
+                                <div class="col-md-6">
+                                    <strong>Vai trò:</strong> <span class="badge bg-success">Admin</span>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <a href="/Account/Login" class="btn btn-success">
+                                    <i class="fas fa-sign-in-alt me-2"></i>
+                                    Đăng Nhập Ngay
+                                </a>
+                                <a href="/Admin/Dashboard" class="btn btn-info">
+                                    <i class="fas fa-tachometer-alt me-2"></i>
+                                    Vào Admin Dashboard
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="existingAdmin" class="mt-4" style="display: none;">
+                        <div class="alert alert-warning">
+                            <h5><i class="fas fa-exclamation-triangle me-2"></i>Tài khoản Admin đã tồn tại!</h5>
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <strong>Tên đăng nhập:</strong> <span id="existingUsername"></span>
+                                </div>
+                                <div class="col-md-6">
+                                    <strong>Email:</strong> <span id="existingEmail"></span>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <a href="/Account/Login" class="btn btn-success">
+                                    <i class="fas fa-sign-in-alt me-2"></i>
+                                    Đăng Nhập
+                                </a>
+                                <a href="/Admin/Dashboard" class="btn btn-info">
+                                    <i class="fas fa-tachometer-alt me-2"></i>
+                                    Vào Admin Dashboard
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        document.getElementById('createAdminBtn').addEventListener('click', function() {
+            this.disabled = true;
+            this.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Đang tạo...';
+            
+            fetch('/Admin/CreateDefaultAdmin')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        // Hiển thị thông tin tài khoản mới tạo
+                        document.getElementById('adminUsername').textContent = data.credentials.username;
+                        document.getElementById('adminPassword').textContent = data.credentials.password;
+                        document.getElementById('adminEmail').textContent = data.credentials.email || 'admin@doanhnghiep.gov.vn';
+                        document.getElementById('adminInfo').style.display = 'block';
+                        document.getElementById('result').innerHTML = '<div class="alert alert-success">' + data.message + '</div>';
+                    } else {
+                        // Hiển thị thông tin tài khoản đã tồn tại
+                        if (data.existingAdmin) {
+                            document.getElementById('existingUsername').textContent = data.existingAdmin.username;
+                            document.getElementById('existingEmail').textContent = data.existingAdmin.email;
+                            document.getElementById('existingAdmin').style.display = 'block';
+                        }
+                        document.getElementById('result').innerHTML = '<div class="alert alert-warning">' + data.message + '</div>';
+                    }
+                })
+                .catch(error => {
+                    document.getElementById('result').innerHTML = '<div class="alert alert-danger">Có lỗi xảy ra: ' + error.message + '</div>';
+                })
+                .finally(() => {
+                    document.getElementById('createAdminBtn').disabled = false;
+                    document.getElementById('createAdminBtn').innerHTML = '<i class="fas fa-plus-circle me-2"></i>Tạo Tài Khoản Admin';
+                });
+        });
+    </script>
+} 

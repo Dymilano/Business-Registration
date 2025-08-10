@@ -1,0 +1,284 @@
+/* Success Banner Styles */
+.success-banner {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 80px 0;
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.success-banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+    opacity: 0.3;
+}
+
+.success-content {
+    position: relative;
+    z-index: 2;
+}
+
+.success-icon {
+    font-size: 4rem;
+    color: #28a745;
+    animation: bounce 2s infinite;
+}
+
+.success-title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.success-subtitle {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+.success-message {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+.success-description {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 2rem;
+}
+
+.success-buttons .btn {
+    padding: 12px 24px;
+    font-weight: 600;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.success-buttons .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+
+/* Registration Card Styles */
+.registration-card {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    overflow: hidden;
+    border: none;
+    margin-bottom: 30px;
+}
+
+.registration-card .card-header {
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+    color: white;
+    padding: 25px 30px;
+    border: none;
+}
+
+.header-icon {
+    width: 60px;
+    height: 60px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+    font-size: 1.5rem;
+}
+
+.header-content h4 {
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.header-content p {
+    opacity: 0.9;
+    margin: 0;
+}
+
+.registration-card .card-body {
+    padding: 30px;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.info-item:hover {
+    background: #e9ecef;
+    transform: translateX(5px);
+}
+
+.info-label {
+    flex: 0 0 40%;
+    font-weight: 600;
+    color: #495057;
+    font-size: 0.95rem;
+}
+
+.info-value {
+    flex: 0 0 60%;
+    font-weight: 500;
+    color: #212529;
+}
+
+.registration-id {
+    background: #007bff;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.badge {
+    padding: 8px 12px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border-radius: 20px;
+}
+
+.badge-primary {
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+}
+
+.badge-warning {
+    background: linear-gradient(135deg, #ffc107 0%, #e0a800 100%);
+    color: #212529;
+}
+
+/* Step Cards Styles */
+.step-card {
+    background: white;
+    border-radius: 15px;
+    padding: 30px 20px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.step-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.step-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+}
+
+.step-icon {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.icon-circle {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 15px;
+    font-size: 2rem;
+    color: white;
+    box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
+}
+
+.step-number {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    width: 30px;
+    height: 30px;
+    background: #dc3545;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.9rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.step-content h4 {
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #212529;
+}
+
+.step-content p {
+    color: #6c757d;
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* Animations */
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .success-title {
+        font-size: 2rem;
+    }
+    
+    .success-subtitle {
+        font-size: 1.5rem;
+    }
+    
+    .success-buttons .btn {
+        display: block;
+        margin-bottom: 10px;
+        width: 100%;
+    }
+    
+    .info-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .info-label {
+        flex: none;
+        margin-bottom: 5px;
+    }
+    
+    .info-value {
+        flex: none;
+    }
+} 

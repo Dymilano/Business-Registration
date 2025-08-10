@@ -1,0 +1,370 @@
+@model IEnumerable<DoanhNghiepPortal.Models.ArticleModel>
+@{
+    ViewData["Title"] = "Quản Lý Bài Viết";
+    Layout = "_AdminLayout";
+}
+
+@section Styles {
+    <style>
+        .admin-container {
+            padding: 20px;
+        }
+        
+        .page-header {
+            background: linear-gradient(135deg, #dc3545, #c82333);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .page-header h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+        
+        .filters {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        
+        .filter-row {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .filter-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .filter-group label {
+            font-weight: bold;
+            margin: 0;
+        }
+        
+        .filter-group select,
+        .filter-group input {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            min-width: 150px;
+        }
+        
+        .btn-filter {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .btn-filter:hover {
+            background: #c82333;
+        }
+        
+        .table-container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .table-header {
+            background: linear-gradient(135deg, #dc3545, #c82333);
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .table-header h3 {
+            margin: 0;
+        }
+        
+        .btn-add {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .btn-add:hover {
+            background: #1e7e34;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .table-responsive {
+            overflow-x: auto;
+        }
+        
+        .table {
+            margin: 0;
+        }
+        
+        .table th {
+            background: #f8f9fa;
+            border: none;
+            padding: 15px 10px;
+            font-weight: bold;
+            color: #495057;
+        }
+        
+        .table td {
+            padding: 15px 10px;
+            border: none;
+            border-bottom: 1px solid #eee;
+            vertical-align: middle;
+        }
+        
+        .table tbody tr:hover {
+            background: #f8f9fa;
+        }
+        
+        .status-badge {
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        
+        .status-published {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .status-draft {
+            background: #fff3cd;
+            color: #856404;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 5px;
+        }
+        
+        .btn-action {
+            padding: 5px 10px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 3px;
+        }
+        
+        .btn-view {
+            background: #17a2b8;
+            color: white;
+        }
+        
+        .btn-edit {
+            background: #ffc107;
+            color: #212529;
+        }
+        
+        .btn-delete {
+            background: #dc3545;
+            color: white;
+        }
+        
+        .article-title {
+            font-weight: bold;
+            color: #495057;
+            margin-bottom: 5px;
+        }
+        
+        .article-excerpt {
+            color: #6c757d;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+        
+        .article-meta {
+            font-size: 0.8rem;
+            color: #6c757d;
+            margin-top: 5px;
+        }
+        
+        .no-data {
+            text-align: center;
+            padding: 50px;
+            color: #6c757d;
+        }
+        
+        .no-data i {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            opacity: 0.5;
+        }
+    </style>
+}
+
+<div class="admin-container">
+    @if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+    {
+        <div class="alert alert-danger">
+            <strong>Lỗi:</strong> @ViewBag.ErrorMessage
+        </div>
+    }
+
+    <div class="page-header">
+        <h1><i class="fas fa-newspaper me-2"></i>Quản Lý Bài Viết</h1>
+        <p>Quản lý và xuất bản bài viết trên hệ thống</p>
+    </div>
+
+    <!-- Bộ lọc -->
+    <div class="filters">
+        <form method="get" action="/Admin/Articles">
+            <div class="filter-row">
+                <div class="filter-group">
+                    <label>Trạng thái:</label>
+                    <select name="status" id="statusFilter" onchange="this.form.submit()">
+                        <option value="">Tất cả</option>
+                        <option value="Published">Đã xuất bản</option>
+                        <option value="Draft">Bản nháp</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Tìm kiếm:</label>
+                    <input type="text" name="search" value="@ViewBag.Search" placeholder="Tiêu đề, nội dung...">
+                </div>
+                <div class="filter-group">
+                    <button type="submit" class="btn-filter">
+                        <i class="fas fa-search"></i> Tìm kiếm
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!-- Bảng dữ liệu -->
+    <div class="table-container">
+        <div class="table-header">
+            <h3><i class="fas fa-list me-2"></i>Danh sách bài viết (@Model.Count())</h3>
+            <a href="/Admin/CreateArticle" class="btn-add">
+                <i class="fas fa-plus"></i> Thêm bài viết
+            </a>
+        </div>
+        
+        <div class="table-responsive">
+            @if (Model.Any())
+            {
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Tiêu đề</th>
+                            <th>Tác giả</th>
+                            <th>Danh mục</th>
+                            <th>Ngày tạo</th>
+                            <th>Trạng thái</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var article in Model)
+                        {
+                            <tr>
+                                <td>
+                                    <div class="article-title">@article.Title</div>
+                                    <div class="article-excerpt">
+                                        @(article.Content.Length > 100 ? article.Content.Substring(0, 100) + "..." : article.Content)
+                                    </div>
+                                    <div class="article-meta">
+                                        <i class="fas fa-eye me-1"></i>@article.ViewCount lượt xem
+                                    </div>
+                                </td>
+                                <td>@article.Author</td>
+                                <td>@article.Category</td>
+                                <td>@article.CreatedAt.ToString("dd/MM/yyyy HH:mm")</td>
+                                <td>
+                                    @if (article.Status == "Published")
+                                    {
+                                        <span class="status-badge status-published">✅ Đã xuất bản</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="status-badge status-draft">📝 Bản nháp</span>
+                                    }
+                                </td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <a href="/Admin/ArticleDetail/@article.Id" class="btn-action btn-view" title="Xem chi tiết">
+                                            <i class="fas fa-eye"></i>
+                                        </a>
+                                        <a href="/Admin/EditArticle/@article.Id" class="btn-action btn-edit" title="Chỉnh sửa">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                        <button onclick="deleteArticle(@article.Id)" class="btn-action btn-delete" title="Xóa">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <div class="no-data">
+                    <i class="fas fa-newspaper"></i>
+                    <h4>Không có dữ liệu</h4>
+                    <p>Chưa có bài viết nào trong hệ thống.</p>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // Set selected value for filters
+        document.addEventListener('DOMContentLoaded', function() {
+            const statusFilter = document.getElementById('statusFilter');
+            if (statusFilter) {
+                statusFilter.value = '@ViewBag.Status';
+            }
+        });
+
+        function deleteArticle(id) {
+            if (confirm('Bạn có chắc chắn muốn xóa bài viết này? Hành động này không thể hoàn tác.')) {
+                fetch('/Admin/DeleteArticle', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: `id=${id}`
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert('Xóa bài viết thành công!');
+                        location.reload();
+                    } else {
+                        alert('Có lỗi xảy ra: ' + data.message);
+                    }
+                })
+                .catch(error => {
+                    alert('Có lỗi xảy ra khi xóa bài viết');
+                });
+            }
+        }
+    </script>
+} 
